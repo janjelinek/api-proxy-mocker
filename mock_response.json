@@ -1,11 +1,16 @@
 [
     {
-        "responseCode": 415,
-        "forUrl": "/api/v2/query" ,
-
-        "responseData":
-
-        {"error":"You do not have access to specified audience(s) with ID: .\u003c/br\u003e\u003c/br\u003eThis may be due to a change in your permissions, or due to a change in the questions used to create this audience. Please try to recreate the audience in Audience Builder, or contact support for help.","exception":"InvalidAudiences","info":{"inaccessible_audiences":[null]}}
-
+        "responseCode": 200,
+        "forUrl": "/some/api/url" ,
+        "responseFile": "path_to_json_file_relative_to_this_file.json"
     }
+    , {
+        "responseCode": 400,
+        "forUrl": "/api/some_call",
+        "responseData":
+        {
+            "data": {"custom response data defined here"}
+        }
+    }
+
 ]
