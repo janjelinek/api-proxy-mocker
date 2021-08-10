@@ -212,7 +212,7 @@ const requestHandler = (request, response) => {
   }
 }
 
-const server = http.createServer({insecureHTTPParser: true}, requestHandler)
+const server = http.createServer(requestHandler)
 
 server.listen(config.port, (err) => {
   if (err) {
