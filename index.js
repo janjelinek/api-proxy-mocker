@@ -9,7 +9,8 @@ const MOCK_RESPONSE_HEADER = 'mock_response'
 
 const defaultHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'access-control-allow-headers': 'Authorization,content-type'
+  'access-control-allow-headers': 'Authorization,content-type',
+  'Access-Control-Allow-Methods': '*'
 }
 
 const config = (() => {
@@ -108,6 +109,7 @@ const proxy = (request, response) => {
       }
       if (error) {
         console.error('Request failed', error)
+        res = {statusCode: 500}
       } else {
         if (processThisRequest) {
           console.log('Proxying finished.')
@@ -143,7 +145,7 @@ const proxy = (request, response) => {
 
   console.log('METHOD', request.method)
 
-  if (['POST', 'PUT'].indexOf(request.method) > -1) {
+  if (['POST', 'PUT', 'PATCH'].indexOf(request.method) > -1) {
     console.log('Prepare BODY')
 
     request.on('data', chunk => {
